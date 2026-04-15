@@ -106,15 +106,21 @@
                     {% if todo['complete'] == False %}
                         <div id = "todoitem">
                         <p id = "{{todo['id']}}">{{todo['title']}}</p>
-                        <button><a href="/complete/{{todo['id']}}"> <i class="fa fa-check"></i></a></button>
+                        <form action="/complete/{{todo['id']}}" method="POST" style="display:inline;">
+                            <button type="submit"><i class="fa fa-check"></i></button>
+                        </form>
                         <button onclick="openPopup({{todo['id']}})"><i class="fa fa-pencil"></i></button>
-                        <button><a href="/delete/{{todo['id']}}"><i class="fa fa-trash-o"></i></a></button>
+                        <form action="/delete/{{todo['id']}}" method="POST" style="display:inline;">
+                            <button type="submit"><i class="fa fa-trash-o"></i></button>
+                        </form>
                         </div>
                     {% else %}
                         <div id = "todoitem_comp">
                         <p><del>{{todo['title']}}</del></p>
                         <button onclick="openPopup({{todo['id']}})"><i class="fa fa-pencil"></i></button>
-                        <button><a href="/delete/{{todo['id']}}"><i class="fa fa-trash-o"></i></a></button>
+                        <form action="/delete/{{todo['id']}}" method="POST" style="display:inline;">
+                            <button type="submit"><i class="fa fa-trash-o"></i></button>
+                        </form>
                     </div>
                     {% endif %}
                     

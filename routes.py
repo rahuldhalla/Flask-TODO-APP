@@ -41,14 +41,14 @@ def update():
     return redirect(url_for("todo.root"))
 
 
-@bp.route("/delete/<int:todo_id>")
+@bp.route("/delete/<int:todo_id>", methods=["POST", "DELETE"])
 def delete(todo_id):
     todo_db = Query()
     get_db().remove(todo_db.id == todo_id)
     return redirect(url_for("todo.root"))
 
 
-@bp.route("/complete/<int:todo_id>")
+@bp.route("/complete/<int:todo_id>", methods=["POST", "PATCH"])
 def complete(todo_id):
     todo_db = Query()
     get_db().update({"complete": True}, todo_db.id == todo_id)
